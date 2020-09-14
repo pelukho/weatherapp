@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>Weather application</title>
+
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+    <link href="/static/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="/static/js/ie-support/html5.js"></script>
+    <script src="/static/js/ie-support/respond.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+            color: #bfc1c8;
+            font-family: "Roboto", "Open Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.5;
+            background: #1e202b;
+        }
+    </style>
+</head>
+
+<body>
+<div class="site-content">
+    <div class="site-header">
+        <div class="container">
+            <a href="/" class="branding">
+                <img src="/static/images/logo.png" alt="" class="logo">
+                <div class="logo-type">
+                    <h1 class="site-title">Company name</h1>
+                    <small class="site-description">tagline goes here</small>
+                </div>
+            </a>
+
+            <!-- Default snippet for navigation -->
+            <div class="main-navigation">
+                <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul class="menu">
+                    <li class="menu-item current-menu-item"><a href="/">Home</a></li>
+                    <li class="menu-item"><a href="/list">My Cities</a></li>
+                </ul> <!-- .menu -->
+            </div> <!-- .main-navigation -->
+
+            <div class="mobile-navigation"></div>
+
+        </div>
+    </div> <!-- .site-header -->
+
+    <div class="hero" data-bg-image="/static/images/banner.png">
+        <div class="container">
+            <form action="#" class="find-location">
+                <input type="text" placeholder="Add city...">
+                <input type="submit" value="Add">
+            </form>
+
+        </div>
+    </div>
+
+    <div class="forecast-table">
+        <div class="container">
+            <div class="forecast-container">
+                <table class="table table-dark" id="list">
+                    <thead>
+                    <tr>
+                        <th scope="col">#id</th>
+                        <th scope="col">City name</th>
+                        <th scope="col" style="text-align: right;">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {{#city}}
+                        <tr id="element-id-{{id}}">
+                            <th scope="row">{{id}}</th>
+                            <td>{{city}}</td>
+                            <td style="text-align: right;">
+                                <a href="/view?id={{id}}" class="btn btn-primary">View</a>
+                                <button type="button" data-id="{{id}}" class="btn btn-danger delete">Delete</button>
+                            </td>
+                        </tr>
+                    {{/city}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="colophon">Copyright 2020 Company name. Designed by Themezy. All rights reserved</p>
+        </div>
+    </footer> <!-- .site-footer -->
+</div>
+
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+<script src="/static/js/plugins.js"></script>
+<script src="/static/js/list.js"></script>
+
+</body>
+
+</html>
