@@ -6,7 +6,6 @@ import com.example.weather.service.CityService;
 import com.example.weather.service.RestService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,12 +23,11 @@ public class CityController {
     public String addCity(@RequestParam("city") String cityName, @AuthenticationPrincipal User user) {
 
         String getCity = restService.getWeatherByCity(cityName).toString();
+        City cityFromDb = cityService.findByName(cityName, user.getId());
 
         if (getCity.equals("{}")) {
             return getCity;
         }
-
-        City cityFromDb = cityService.findByName(cityName, user.getId());
 
         if (cityFromDb != null) {
             return "{\"error\":\"City already exist!\"}";
@@ -45,7 +43,6 @@ public class CityController {
 
     @GetMapping("/delete")
     public String addCity(@RequestParam("id") Long id) {
-
         String deleted = cityService.findById(id).toString();
         cityService.delete(id);
 
